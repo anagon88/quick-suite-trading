@@ -1,0 +1,49 @@
+<!-- <div class="main-content"> -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card" [ngClass]="{'card-plain': !isMainTable}">
+                <div class="card-header card-header-primary">
+                    <h4 class="card-title ">{{title}}</h4>
+                    <p class="card-category" *ngIf="subtitle"> {{subtitle}}</p>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <ng-container *ngFor="let item of tableTitles">
+                                    <th>
+                                        {{item}}
+                                    </th>
+                                </ng-container>
+                            </thead>
+                            <tbody>
+                                <ng-container *ngFor="let infoRow of tableInfo">
+                                    <tr>
+                                        <td>
+                                            <img src="{{'/assets/resources/' + infoRow.title.split(':')[0] + '.png'}}"
+                                                style="width: 50px;" (click)="goToUserInfo(infoRow)" />
+                                            <div *ngIf="isSaved(infoRow)">Added to Wishlist</div>
+                                        </td>
+                                        <ng-container *ngFor="let info of getRowValues(infoRow)">
+                                            <td *ngIf="info !== 'action'">
+                                                {{info}}
+                                            </td>
+                                        </ng-container>
+                                        <td>
+                                            <button *ngIf="!isSaved(infoRow)" (click)="columnButtonClicked(infoRow)">{{columnButton}}</button>
+                                            <button *ngIf="isSaved(infoRow)" (click)="noColumnButtonClicked(infoRow)">No {{columnButton}}</button>
+                                        </td>
+                                    </tr>
+                                </ng-container>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button *ngIf="addButton" mat-raised-button class="btn btn-info pull-right"
+        (click)="goToPage()">{{addButton}}</button>
+</div>
+<!-- </div> -->

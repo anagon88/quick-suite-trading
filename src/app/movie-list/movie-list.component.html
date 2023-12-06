@@ -1,0 +1,10 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <app-table-list class="col-md-12" [title]="'Movies'" [isMainTable]="true" [tableTitles]="tableTitles"
+                [tableInfo]="tableInfo" [redirectBtn]="'/movie-details'" 
+                [columnButton]="'Add to wathlist'" (onColumnButtonClicked)="btnColumnClicked($event)" 
+                (onNoColumnButtonClicked)="btnNoColumnClicked($event)"></app-table-list>
+        </div>
+    </div>
+</div>
